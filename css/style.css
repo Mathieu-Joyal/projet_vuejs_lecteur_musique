@@ -1,0 +1,199 @@
+html {
+  box-sizing: border-box;
+  font-family: "roboto", sans-serif;
+  font-size: 16px;
+  line-height: 1.5;
+  margin: 0;
+}
+
+#app {
+  transition: all 0.5s;
+}
+
+#app[v-cloak] {
+  opacity: 0;
+}
+
+html, body {
+  min-height: 100vh;
+  height: 100%;
+}
+
+body {
+  background-image: url("../img/background_image1.jpg");
+  background-size: cover;
+}
+body .spa {
+  position: relative;
+}
+body .accueil {
+  position: absolute;
+  top: 0;
+  left: calc(50% - 150px);
+  height: 300px;
+  margin-left: auto;
+  margin-right: auto;
+  width: 300px;
+}
+body .accueil .accueil_chanson {
+  position: relative;
+  background-image: url("../img/logo.png");
+  background-size: cover;
+  height: 100%;
+  width: 100%;
+}
+body .accueil .accueil_chanson button {
+  position: absolute;
+  bottom: 0px;
+  left: calc(50% - 75px);
+  background-color: orange;
+  border-radius: 10px;
+  transition: background-color 0.1s;
+  width: 150px;
+}
+body .accueil .accueil_chanson button a {
+  color: rgb(144, 238, 144);
+  font-size: 24px;
+  font-weight: bold;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+body .accueil .accueil_chanson button a:hover {
+  color: #fff;
+}
+body .conteneur_liste_chanson {
+  display: flex;
+  justify-content: center;
+}
+body .conteneur_liste_chanson .liste_chanson {
+  background-color: rgb(69, 90, 100);
+  border: 3px solid white;
+  border-radius: 10px;
+  min-width: 80%;
+  width: 80%;
+}
+body .conteneur_liste_chanson .liste_chanson .logo {
+  text-align: center;
+}
+body .conteneur_liste_chanson .liste_chanson .logo img {
+  height: 125px;
+}
+body .conteneur_liste_chanson .liste_chanson .recherche {
+  display: flex;
+  justify-content: right;
+  margin: 50px;
+}
+body .conteneur_liste_chanson .liste_chanson .recherche input {
+  border-radius: 5px;
+  width: 250px;
+  background-color: #9fb3bd;
+}
+body .conteneur_liste_chanson .liste_chanson .recherche img {
+  height: 30px;
+  margin-left: 15px;
+}
+body .conteneur_liste_chanson .liste_chanson .chansons {
+  border-top: 1px solid white;
+  border-bottom: 1px solid white;
+  padding-left: 15px;
+}
+body .conteneur_liste_chanson .liste_chanson .chansons .chanson {
+  align-items: center;
+  display: flex;
+}
+body .conteneur_liste_chanson .liste_chanson .chansons .chanson img.chanson_play {
+  height: 50px;
+  margin-right: 15px;
+}
+body .conteneur_liste_chanson .liste_chanson .chansons .chanson img.chanson_image {
+  height: 75px;
+  margin-right: 15px;
+}
+body .conteneur_liste_chanson .liste_chanson .chansons .chanson p.chanson_titre {
+  color: white;
+  font-weight: bold;
+}
+body .conteneur_liste_chanson .liste_chanson .chansons .chanson p {
+  display: inline-block;
+  margin-right: 15px;
+}
+body .conteneur_liste_chanson .liste_chanson .chanson_actif {
+  background-color: #303f46;
+}
+body .conteneur_liste_chanson .liste_chanson .chanson_barre {
+  background-color: #303f46;
+  margin-top: 50px;
+  padding: 25px;
+}
+body .conteneur_liste_chanson .liste_chanson .chanson_barre .images {
+  display: flex;
+  justify-content: space-between;
+}
+body .conteneur_liste_chanson .liste_chanson .chanson_barre .images img.sauvegarde_chanson_image {
+  background-color: rgb(116, 116, 116);
+  border: 2px solid rgb(116, 116, 116);
+  border-radius: 5px;
+  height: 150px;
+  margin-bottom: 20px;
+  width: 150px;
+}
+body .conteneur_liste_chanson .liste_chanson .chanson_barre .images img.bouton_play {
+  height: 64px;
+  width: 64px;
+}
+body .conteneur_liste_chanson .liste_chanson .chanson_barre p {
+  text-align: center;
+}
+body .conteneur_liste_chanson .liste_chanson .chanson_barre p.chanson_titre {
+  color: rgb(225, 225, 225);
+  font-size: 22px;
+  font-weight: bold;
+}
+body .conteneur_liste_chanson .liste_chanson .chanson_barre p.chanson_artiste {
+  color: rgb(190, 190, 190);
+  font-size: 18px;
+  font-weight: bolder;
+}
+body .conteneur_liste_chanson .liste_chanson .chanson_barre .progression {
+  border-bottom: 2px solid white;
+  color: darkgray;
+  text-align: center;
+}
+body .conteneur_liste_chanson .liste_chanson .chanson_barre .volume p {
+  color: lightgray;
+  font-size: 14px;
+  font-weight: 300;
+  padding-top: 20px;
+  text-align: left;
+}
+body .conteneur_liste_chanson .liste_chanson .chanson_barre .barre_progression {
+  position: relative;
+  border: 1px solid white;
+  border-radius: 15px;
+  height: 20px;
+  width: 400px;
+  overflow: hidden;
+}
+body .conteneur_liste_chanson .liste_chanson .chanson_barre .barre_progression .ligne_progression {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  border-radius: 15px;
+  background-color: rgb(20, 163, 151);
+  background-size: 20px 20px;
+  height: 100%;
+}
+body .conteneur_liste_chanson .liste_chanson .div_retour {
+  margin: 20px;
+}
+body .conteneur_liste_chanson .liste_chanson .div_retour .retour {
+  border: 2px solid white;
+  border-radius: 5px;
+  color: lightblue;
+  padding: 10px 5px;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+body .conteneur_liste_chanson .liste_chanson .div_retour .retour:hover {
+  color: darkblue;
+}/*# sourceMappingURL=style.css.map */

@@ -1,0 +1,256 @@
+// Les variables de couleurs
+$bleu-vert: rgb(69, 90, 100);
+$bleu-vert-fonce: darken($bleu-vert, 10%);
+$bleu-vert-pale: lighten($bleu-vert, 35%);
+$gris: rgb(116, 116, 116);
+$gris-pale: rgb(225, 225, 225);
+$turquoise: rgb(20, 163, 151);
+$vert-lime: rgb(144, 238, 144);
+
+
+html {
+    box-sizing: border-box;
+    font-family: 'roboto', sans-serif;
+    font-size: 16px;
+    line-height: 1.5;
+    margin: 0;
+}
+
+#app {
+    transition: all 0.5s;
+}
+#app[v-cloak] {
+    opacity: 0;
+}
+
+// *,
+// *::before,
+// *::after {
+//     box-sizing: inherit;
+//     // font-size: inherit;
+//     margin: 0;
+//     padding: 0;
+// }
+
+html, body {
+    min-height: 100vh;
+    height: 100%;
+}
+
+body {
+    background-image: url("../img/background_image1.jpg");
+    background-size: cover;
+
+    .spa {
+        position: relative;
+    }
+
+    .accueil {
+        position: absolute;
+        top: 0;
+        left: calc(50% - 150px);
+
+        height: 300px;
+        margin-left: auto;
+        margin-right: auto;
+        width: 300px;
+
+        .accueil_chanson {
+            position: relative;
+
+            background-image: url("../img/logo.png");
+            background-size: cover;
+            height: 100%;
+            width: 100%;
+
+            button {
+                position: absolute;
+                bottom: 0px;
+                left: calc(50% - 75px);
+
+                background-color: orange;
+                border-radius: 10px;
+                transition: background-color .1s;
+                width: 150px;
+
+                a {
+                    color: $vert-lime;
+                    font-size: 24px;
+                    font-weight: bold;
+                    text-decoration: none;
+                    transition: color .2s;
+                    
+                    &:hover {
+                        color: #fff;
+                    }
+                }
+            }
+        }
+    }
+
+    .conteneur_liste_chanson {
+        display: flex;
+        justify-content: center;
+
+        .liste_chanson {
+            background-color: $bleu-vert;
+            border: 3px solid white;
+            border-radius: 10px;
+            min-width: 80%;
+            width: 80%;
+
+            .logo {
+                text-align: center;
+
+                img {
+                    height: 125px;
+                }
+            }
+
+            .recherche {
+                display: flex;
+                justify-content: right;
+                margin: 50px;
+
+                input {
+                    border-radius: 5px;
+                    width: 250px;
+                    background-color: $bleu-vert-pale;
+                }   
+
+                img {
+                    height: 30px;
+                    margin-left: 15px;
+                }
+            }
+
+            .chansons {
+                border-top: 1px solid white;
+                border-bottom: 1px solid white;
+                padding-left: 15px;
+
+                .chanson {
+                    align-items: center;
+                    display: flex;
+
+                    img.chanson_play {
+                        height: 50px;
+                        margin-right: 15px;
+                    }
+
+                    img.chanson_image {
+                        height: 75px;
+                        margin-right: 15px;
+                    }
+                    p.chanson_titre {
+                        color: white;
+                        font-weight: bold;
+                    }
+
+                    p {
+                        display: inline-block;
+                        margin-right: 15px;
+                    }
+                }
+            }
+
+            .chanson_actif {
+                background-color: $bleu-vert-fonce;
+            }
+
+            .chanson_barre {
+                background-color: $bleu-vert-fonce;
+                margin-top: 50px;
+                padding: 25px;
+
+                .images {
+                    display: flex;
+                    justify-content: space-between;
+
+                    img.sauvegarde_chanson_image {
+                        background-color: $gris;
+                        border: 2px solid $gris;
+                        border-radius: 5px;
+                        height: 150px;
+                        margin-bottom: 20px;
+                        width: 150px;
+                    }
+                    
+                    img.bouton_play {
+                        height: 64px;
+                        width: 64px;
+                    }
+                }
+
+                p {
+                    text-align: center;
+                }
+
+                p.chanson_titre {
+                    color: $gris-pale;
+                    font-size: 22px;
+                    font-weight: bold;
+                }
+
+                p.chanson_artiste {
+                    color: rgb(190, 190, 190);
+                    font-size: 18px;
+                    font-weight: bolder;
+                }
+
+                .progression {
+                    border-bottom: 2px solid white;
+                    color:darkgray;
+                    text-align: center;
+                    
+                }
+
+                .volume p {
+                    color: lightgray;
+                    font-size: 14px;
+                    font-weight: 300;
+                    padding-top: 20px;
+                    text-align: left;
+                }
+
+                .barre_progression {
+                    position: relative;
+
+                    border: 1px solid white;
+                    border-radius: 15px;
+                    height: 20px;
+                    width: 400px;
+                    overflow: hidden;
+
+                    .ligne_progression {
+                        position: absolute;
+                        top: 0px;
+                        left: 0px;
+
+                        border-radius: 15px;
+                        background-color: $turquoise;
+                        background-size: 20px 20px;
+                        height: 100%;
+                    }
+                }    
+            }
+
+            .div_retour {
+                margin: 20px;
+
+                .retour {
+                    border: 2px solid white;
+                    border-radius: 5px;
+                    color: lightblue;
+                    padding: 10px 5px;
+                    text-decoration: none;
+                    transition: color .2s;
+
+                    &:hover {
+                        color: darkblue;
+                    }
+                }
+            }
+        }
+    }
+}

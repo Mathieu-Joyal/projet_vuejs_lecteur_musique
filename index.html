@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Module 3 - Travail Synthèse</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="icon" type="image/x-icon" href="/img/logo.png">
+</head>
+<body>
+    <div id="app" v-cloak>
+
+        <main class="spa">
+
+            <div class="accueil">
+    
+                <section class="accueil_chanson" v-if="page_active == 'accueil'">
+
+                    <button>
+                        <a href="#" @click.prevent="changerPage('liste_chanson')">Cliquez ici!</a>
+                    </button>
+                </section>
+            </div>    
+
+            <div class="conteneur_liste_chanson">
+
+                <section class="liste_chanson" v-if="page_active == 'liste_chanson'">
+
+                    <div class="logo">
+                        <img src="img/logo_blanc.png" alt="logo s.p.o.t.i.f.y.">
+                    </div>
+
+                    <div class="recherche">
+                        <input type="text" v-model="texte_recherche" placeholder="Recherchez une chanson">
+                        <img src="img/loupe.png" alt="loupe">
+                    </div>
+
+                    <div class="chansons" v-for="chanson of filtrer(chansons)" :class="{ chanson_actif: chanson == selection_chanson}">
+
+                        <div class="chanson">
+
+                            <img v-if="selection_chanson == chanson" class="chanson_play" :src="'img/' + source_image_bouton" @click.prevent="lancerAudio(chanson)">
+                            <img v-if="selection_chanson != chanson" class="chanson_play" src="img/play.png" @click.prevent="lancerAudio(chanson)">
+                            <img class="chanson_image" :src="'chansons/' + chanson.image" alt="">
+                            <p class="chanson_titre">{{chanson.titre}}</p>
+                            <p class="chanson_artiste">{{chanson.artiste}}</p>
+                            <p class="chanson_temps">{{conversionTemps(chanson.temps)}}</p>
+                        </div>
+                    </div>
+
+                    <div class="chanson_barre">
+                        
+                        <audio id="audio"
+                               :src="'chansons/' + source_audio"
+                               ref="balise_audio"
+                               @timeupdate="tempsMiseAJour()"
+                               @click="basculerJouer()"
+                               type="mp3"
+                               autoplay>
+                        </audio>
+
+                        <div class="images">
+                            <img class="bouton_play" :src="'img/' + source_image_bouton" @click="basculerJouer()">
+                            <img class="sauvegarde_chanson_image" :src="'chansons/' + sauvegarde_chanson_image">
+                        </div>
+
+                        <p class="chanson_titre">{{sauvegarde_chanson_titre}}</p>
+                        <p class="chanson_artiste">{{sauvegarde_chanson_artiste}}</p>
+
+                        <div class="progression">
+                            {{ progression }} %
+                        </div>
+
+                        <div class="volume">
+                            <p class="volume">Volume:</p>
+                            <input class="slider" 
+                                    v-model="audio_volume"
+                                    type="range" 
+                                    min="0" 
+                                    max="100" 
+                                    @change="audioVolume(audio_volume)">
+                        </div>
+
+                        <div class="conteneur_barre_progression">
+                            <div>
+                                {{duree_actuelle}} / {{conversionTemps(sauvegarde_chanson_duree)}}
+                            </div>
+
+                            <div class="barre_progression">
+                                <div class="ligne_progression" :style="{'width' : progression + '%'}"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="div_retour">
+                        <a class="retour" href="#" @click.prevent="changerPage('accueil')">Retour</a>
+                    </div>
+                </section>
+            </div>
+        </main>
+    </div>
+
+    <script src="js/main.js" type="module"></script>
+</body>
+</html>
